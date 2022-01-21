@@ -8,16 +8,16 @@ function About() {
       </p>
       <p className='text-lg text-gray-400 '>
         Version:
-        <span className='mx-2 text-cyan-400'>1.0.0</span>
+        <span className='mx-2 text-cyan-300'>1.0.0</span>
       </p>
       <p className='text-lg  text-gray-400 '>
         Profile:
         <a
-          href='https://github.com/fastnavy'
+          href='linkedin.com/in/çağlayan-çalışkan-614295227'
           target='_blank'
-          className='text-purple-300 mx-2'
+          className='link link-accent mx-2'
         >
-          fastnavy
+          Caglayan Caliskan
         </a>
       </p>
     </div>
