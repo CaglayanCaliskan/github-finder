@@ -1,5 +1,5 @@
-import { data } from 'autoprefixer';
 import { useEffect, useState } from 'react';
+import Spinner from '../layout/Spinner';
 
 function UserResults() {
   const [users, setUsers] = useState([]);
@@ -8,11 +8,14 @@ function UserResults() {
     fetchUsers();
   }, []);
   const fetchUsers = async () => {
-    const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users`, {
-      headers: {
-        Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_GITHUB_URL}/users`
+      // , {
+      //   headers: {
+      //     Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
+      //   },
+      // }
+    );
 
     const data = await response.json();
     setUsers(data);
@@ -28,7 +31,11 @@ function UserResults() {
       </div>
     );
   } else {
-    return <h1>LOADİNG</h1>;
+    return (
+      <h1>
+        <Spinner />
+      </h1>
+    );
   }
 }
 
