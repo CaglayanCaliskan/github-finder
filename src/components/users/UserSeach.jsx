@@ -1,7 +1,8 @@
 import { useState, useContext } from 'react';
 import GithubContext from '../../context/github/GithubContext';
 function UserSeach() {
-  const { users } = useContext(GithubContext);
+  const { users, searchUsers, clearUsers } = useContext(GithubContext);
+
   const [text, setText] = useState('');
   const handleChange = (e) => {
     setText(e.target.value);
@@ -11,12 +12,15 @@ function UserSeach() {
     if (text === '') {
       alert('search something');
     } else {
-      //todo search users
+      searchUsers(text);
       setText('');
     }
   };
+  const handleClear = () => {
+    clearUsers();
+  };
   return (
-    <div className='grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-8 gap-8'>
+    <div className='grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 mb-8 gap-8'>
       <form onSubmit={handleSubmit}>
         <div className='form-control '>
           <div className='relative'>
@@ -38,7 +42,9 @@ function UserSeach() {
       </form>
       {users.length > 0 && (
         <div>
-          <button className='btn btn-lg btn-secondary'>clear</button>
+          <button className='btn btn-lg btn-secondary' onClick={handleClear}>
+            clear
+          </button>
         </div>
       )}
     </div>
