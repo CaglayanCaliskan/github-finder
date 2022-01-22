@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 function Navbar({ title }) {
   return (
-    <div className='navbar mb-2 shadow-lg bg-neutral text-neutral-content'>
+    <div className='navbar mb-6 shadow-lg bg-neutral text-neutral-content'>
       <div className='container mx-auto'>
         <div className='flex-1 px-2 mx-2'>
           <Link to='/' className='flex items-center text-lg font-bold'>
