@@ -1,10 +1,19 @@
 import { useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import GithubContext from '../context/github/GithubContext';
-import { FaUsers, FaUserFriends, FaCode, FaStore } from 'react-icons/fa';
+import {
+  FaUsers,
+  FaUserFriends,
+  FaCode,
+  FaStore,
+  FaArrowRight,
+} from 'react-icons/fa';
+
+import RepoList from '../components/repos/RepoList';
 
 function User() {
-  const { getUser, user } = useContext(GithubContext);
+  const { getUser, user, loading, getUserRepos, repos } =
+    useContext(GithubContext);
   const params = useParams();
   const {
     login,
@@ -25,6 +34,7 @@ function User() {
 
   useEffect(() => {
     getUser(params.login);
+    getUserRepos(params.login);
     //getUser(params.login);
   }, []);
 
@@ -53,14 +63,16 @@ function User() {
               <h1 className='text-3xl card-title'>
                 {name}
                 <div className='ml-2 mr-1 badge badge-success'>{type}</div>
-                {hireable && (
+                {hireable ? (
                   <div className='mx-1 badge badge-info'>Hireable</div>
+                ) : (
+                  <div className='mx-1 badge badge-info'>null </div>
                 )}
               </h1>
               <p> {bio} </p>
               <div className='mt-4 card-actions'>
                 <a href={html_url} target='_blank' className='btn btn-outline'>
-                  Visit Github Profile
+                  Visit Github Profile <FaArrowRight className='mx-2' />
                 </a>
               </div>
             </div>
@@ -97,10 +109,10 @@ function User() {
             </div>
           </div>
         </div>
-        <div className='w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats'>
+        <div className='w-full py-5 mb-6 rounded-lg shadow-md bg-base-200 stats'>
           <div className='stat'>
             <div className='stat-figure text-secondary'>
-              <FaUsers className='text-3xl md:text-5xl' />
+              <FaUsers className='text-2xl md:text-5xl' />
             </div>
             <div className='stat-title pr-5'>Followers</div>
             <div className='stat-value pr-5 text-3xl md:text-4xl'>
@@ -138,6 +150,7 @@ function User() {
             </div>
           </div>
         </div>
+        <RepoList repos={repos} />
       </div>
     </>
   );
