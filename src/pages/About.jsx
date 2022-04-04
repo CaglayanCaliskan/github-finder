@@ -13,7 +13,7 @@ function About() {
       <p className='text-lg  text-gray-400 '>
         Profile:
         <a
-          href='linkedin.com/in/çağlayan-çalışkan-614295227'
+          href='https://www.linkedin.com/in/caglayan-caliskan/'
           target='_blank'
           className='link link-accent mx-2'
         >
