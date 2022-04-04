@@ -13,7 +13,7 @@ function Footer() {
         </svg>
         <p>Copyright &copy; {footerYear}All rights reserved</p>
         <a
-          href='https://github.com/fastnavy'
+          href='https://github.com/CaglayanCaliskan'
           target='_blank'
           className='text-purple-300 text-opacity-50'
         >
